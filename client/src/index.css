@@ -112,7 +112,9 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --color-my-per
+  --color-my-purple: #842dff;
+  --color-my-lightpurple: #d09bff;
+  --color-my-black: #0c0618;
 
   --breakpoint-2xl: 1440px;
   --breakpoint-3xl: 1536px;
