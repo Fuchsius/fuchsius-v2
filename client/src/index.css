@@ -115,7 +115,8 @@
   --breakpoint-2xl: 1440px;
   --breakpoint-3xl: 1536px;
 
-  --font-pop
+  --font-poppins: "Poppins", sans-serif;
+  --font-redHatDisplay: "Red Hat Display", sans-serif;
 }
 
 @layer base {
@@ -135,4 +136,6 @@
 
 body {
   background-color: #0c0618;
+  color: white;
+  font-family: var(--font-poppins);
 }

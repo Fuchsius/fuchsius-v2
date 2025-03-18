@@ -1,5 +1,13 @@
-const header = () => {
-  return <div>header</div>;
+const Header = () => {
+  return (
+    <header>
+      <div className=" my-container">
+        <nav>
+          <div className=" rounded-full py-">Home</div>
+        </nav>
+      </div>
+    </header>
+  );
 };
 
-export default header;
+export default Header;
