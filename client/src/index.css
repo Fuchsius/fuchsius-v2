@@ -125,6 +125,9 @@
   --font-redHatDisplay: "Red Hat Display", sans-serif;
 
   --shadow-3xl: 0 35px 35px rgba(0, 0, 0, 0.25);
+  --shadow-myshadow1: 0px 0px 20px 0px rgba(132, 45, 255, 1);
+
+  --drop-shadow-3xl: 0 35px 35px rgba(0, 0, 0, 0.25);
 }
 
 @layer base {
@@ -144,6 +147,6 @@
 
 body {
   background-color: #0c0618;
-  color: white;
+  color: #ffffff;
   font-family: var(--font-poppins);
 }

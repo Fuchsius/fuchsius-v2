@@ -1,4 +1,6 @@
+import GradientButton from "@/components/GradientButton";
 import Header from "@/components/header";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const HomePage = () => {
   return (
@@ -122,6 +124,42 @@ const HomePage = () => {
                   IT Solution.
                 </span>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className=" w-full py-12 md:py-16 lg:py-24">
+        <div className="my-container w-full">
+          <div className=" flex items-center justify-between">
+            <div className=" uppercase text-3xl font-semibold font-redHatDisplay leading-10">
+              Our Service
+            </div>
+
+            <div className="flex gap-5">
+              <div className=" border border-my-purple text-my-purple w-12 h-12 max-h-12 max-w-12 rounded-full flex items-center justify-center hover:shadow-myshadow1 transition-all cursor-pointer">
+                <FaArrowLeft />
+              </div>
+              <div className=" border border-my-purple text-my-purple w-12 h-12 max-h-12 max-w-12 rounded-full flex items-center justify-center hover:shadow-myshadow1 transition-all cursor-pointer">
+                <FaArrowRight />
+              </div>
+            </div>
+          </div>
+
+          <div className=" w-full grid grid-cols-3">
+            <div className=" border-2 border-my-purple rounded-lg p-5">
+              <div>Web Development</div>
+              <p>
+                Cut operational costs by automating and streamlining processes.
+              </p>
+
+              <GradientButton
+                text="Learn More"
+                className=" mt-5 mx-auto"
+                // gradientType="blue"
+                // onClick={handleClick}
+                // icon={<Download size={18} />}
+              />
             </div>
           </div>
         </div>
