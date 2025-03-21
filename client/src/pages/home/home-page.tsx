@@ -1,6 +1,8 @@
-import GradientButton from "@/components/GradientButton";
 import Header from "@/components/header";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import ServicesCarousel from "@/components/ServicesCarousel";
+import { SERVICES } from "@/data/services.data";
+
+import { CiGlobe } from "react-icons/ci";
 
 const HomePage = () => {
   return (
@@ -129,7 +131,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className=" w-full py-12 md:py-16 lg:py-24">
+      {/* <div className=" w-full py-12 md:py-16 lg:py-24">
         <div className="my-container w-full">
           <div className=" flex items-center justify-between">
             <div className=" uppercase text-3xl font-semibold font-redHatDisplay leading-10">
@@ -146,20 +148,120 @@ const HomePage = () => {
             </div>
           </div>
 
-          <div className=" w-full grid grid-cols-3">
-            <div className=" border-2 border-my-purple rounded-lg p-5">
-              <div>Web Development</div>
-              <p>
-                Cut operational costs by automating and streamlining processes.
-              </p>
+          <div className=" w-full grid grid-cols-3 mt-8 gap-8">
+            {SERVICES.map((service, index) => (
+              <div
+                key={index}
+                className=" border-2 border-my-purple rounded-lg py-12 px-16 flex flex-col h-full hover:shadow-myshadow2 transition-all min-h-96"
+              >
+                <div className=" text-2xl lg:text-3xl font-semibold font-redHatDisplay leading-10 text-center">
+                  {service.title}
+                </div>
+                <p className=" text-center mt-5">{service.description}</p>
 
-              <GradientButton
-                text="Learn More"
-                className=" mt-5 mx-auto"
-                // gradientType="blue"
-                // onClick={handleClick}
-                // icon={<Download size={18} />}
-              />
+                <GradientButton
+                  text="Learn More"
+                  className=" mt-auto mx-auto"
+                  size="md"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div> */}
+
+      <ServicesCarousel services={SERVICES} />
+
+      <div className="w-full py-12 md:py-16 lg:py-24">
+        <div className="my-container w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-y-16 lg:gap-y-0 lg:gap-x-8">
+            {/* Left Column */}
+            <div className="flex flex-col gap-y-8 w-full">
+              <div className="uppercase text-xl font-semibold tracking-wide text-my-purple">
+                Why choose us
+              </div>
+              <div className="self-stretch">
+                <span className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal font-redHatDisplay leading-tight md:leading-snug lg:leading-[62.40px]">
+                  We Deal With The
+                  <br className="hidden md:block" />
+                  Aspects Professional
+                  <br className="hidden md:block" />
+                </span>
+                <span className="text-purple-300 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal font-redHatDisplay leading-tight md:leading-snug lg:leading-[62.40px]">
+                  IT Solution.
+                </span>
+              </div>
+
+              <div className="w-full">
+                <img
+                  src="/assets/images/image1.svg"
+                  alt="Fuchsius"
+                  className="w-10/12 object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Right Column - Feature Cards */}
+            <div className="w-full lg:h-auto relative flex justify-center items-center py-16 md:py-20 lg:py-0">
+              <div className="flex flex-col gap-y-8 md:gap-y-12 z-20 w-full">
+                {/* First row */}
+                <div className="flex flex-col md:flex-row gap-6 md:gap-x-8 w-full">
+                  <div className="flex items-center justify-between px-6 rounded-lg shadow-myshadow1 py-5 w-full md:w-80 bg-bg1">
+                    <div className="text-lg font-semibold">
+                      Big Data Analysis
+                    </div>
+                    <div className="w-12 h-12 flex-shrink-0 border border-my-purple bg-my-purple/20 rounded-full flex items-center justify-center text-white">
+                      <CiGlobe size={24} />
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between px-6 rounded-lg shadow-myshadow1 py-5 w-full md:w-80 bg-bg1">
+                    <div className="text-lg font-semibold">
+                      High Quality Security
+                    </div>
+                    <div className="w-12 h-12 flex-shrink-0 border border-my-purple bg-my-purple/20 rounded-full flex items-center justify-center text-white">
+                      <CiGlobe size={24} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Second row - with offset on larger screens */}
+                <div className="flex flex-col md:flex-row gap-6 md:gap-x-8 w-full md:ml-0 lg:-ml-32">
+                  <div className="flex items-center justify-between px-6 rounded-lg shadow-myshadow1 py-5 w-full md:w-80 bg-bg1">
+                    <div className="text-lg font-semibold">
+                      24/7 Online Support
+                    </div>
+                    <div className="w-12 h-12 flex-shrink-0 border border-my-purple bg-my-purple/20 rounded-full flex items-center justify-center text-white">
+                      <CiGlobe size={24} />
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between px-6 rounded-lg shadow-myshadow1 py-5 w-full md:w-80 bg-bg1">
+                    <div className="text-lg font-semibold">
+                      24/7 Support Team
+                    </div>
+                    <div className="w-12 h-12 flex-shrink-0 border border-my-purple bg-my-purple/20 rounded-full flex items-center justify-center text-white">
+                      <CiGlobe size={24} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Third row */}
+                <div className="flex flex-col md:flex-row gap-6 md:gap-x-8 w-full">
+                  <div className="flex items-center justify-between px-6 rounded-lg shadow-myshadow1 py-5 w-full md:w-80 bg-bg1">
+                    <div className="text-lg font-semibold">
+                      Business Improvement
+                    </div>
+                    <div className="w-12 h-12 flex-shrink-0 border border-my-purple bg-my-purple/20 rounded-full flex items-center justify-center text-white">
+                      <CiGlobe size={24} />
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between px-6 rounded-lg shadow-myshadow1 py-5 w-full md:w-80 bg-bg1">
+                    <div className="text-lg font-semibold">Easy Solutions</div>
+                    <div className="w-12 h-12 flex-shrink-0 border border-my-purple bg-my-purple/20 rounded-full flex items-center justify-center text-white">
+                      <CiGlobe size={24} />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
