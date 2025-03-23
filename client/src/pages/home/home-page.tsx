@@ -8,6 +8,7 @@ import { AiOutlineSafety } from "react-icons/ai";
 import { RiGroupLine } from "react-icons/ri";
 import { FaRegLaugh } from "react-icons/fa";
 import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 
 
 const HomePage = () => {
@@ -321,6 +322,8 @@ const HomePage = () => {
       </div>
 
       <ContactSection />
+
+      <Footer />
     </>
   );
 };

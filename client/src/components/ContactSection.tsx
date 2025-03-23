@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 type FormData = {
     name: string;
@@ -120,28 +120,23 @@ const ContactSection: React.FC = () => {
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[var(--color-my-purple)] opacity-10 rounded-full blur-3xl -z-10"></div>
 
             <div className="my-container">
-                <div className="rounded-xl bg-[url('/assets/images/bg2.svg')] bg-cover shadow-myshadow1 w-full px-8 lg:p-16">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="rounded-xl bg-[url('/assets/images/bg2.svg')] bg-cover shadow-myshadow1 w-full p-8 lg:p-16">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         {/* Left Column - Content */}
-                        <div className="space-y-6">
-                            <h3 className="text-[var(--color-my-purple)] uppercase tracking-wider font-medium">
+                        <div className="space-y-6 lg:space-y-8">
+                            <h3 className="text-my-purple uppercase tracking-wider font-semibold text-xl">
                                 CONTACT US
                             </h3>
-                            <h2 className="text-3xl md:text-4xl font-bold leading-tight font-redHatDisplay">
-                                We're Ready To Talk About Your <span className="text-[var(--color-my-purple)]">Opportunities.</span>
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-redHatDisplay">
+                                We're Ready To Talk About Your <span className="text-my-lightpurple">Opportunities.</span>
                             </h2>
-                            <div className="space-y-3 text-gray-300 font-[var(--font-redHatDisplay)]">
-                                <p>Develop core online marketplaces focused on customer needs.</p>
-                                <p>Nurture online retailers to become industry leaders.</p>
-                                <p>Expand cutting-edge platforms for next-generation commerce.</p>
-                                <p>Continuously improve system capabilities based on customer feedback.</p>
-                            </div>
+                            <p className=' leading-8'>Develop core online marketplaces focused on customer needs. Nurture online retailers to become industry leaders. Expand cutting-edge platforms for next-generation commerce. Continuously improve system capabilities based on customer feedback.</p>
                         </div>
 
                         {/* Right Column - Form */}
-                        <div className="bg-[var(--color-bg1)]/50 backdrop-blur-sm p-6 md:p-8">
-                            <h3 className="text-2xl md:text-3xl font-bold mb-6">
-                                Make An <span className="text-[var(--color-my-purple)]">Appointment.</span>
+                        <div className="">
+                            <h3 className="text-2xl md:text-3xl lg:text-4xl mb-6">
+                                Make An <span className="text-my-lightpurple">Appointment.</span>
                             </h3>
 
                             {submitSuccess && (
@@ -150,7 +145,7 @@ const ContactSection: React.FC = () => {
                                 </div>
                             )}
 
-                            <form onSubmit={handleSubmit} className="space-y-4">
+                            <form onSubmit={handleSubmit} className="space-y-4 max-w-xl">
                                 <div>
                                     <input
                                         type="text"
@@ -186,7 +181,7 @@ const ContactSection: React.FC = () => {
                                             } rounded-lg p-3 focus:outline-none focus:border-[var(--color-my-purple)] transition text-white ${!formData.consultation ? 'text-gray-500' : ''
                                             }`}
                                     >
-                                        <option value="" className="text-gray-500">Consultation</option>
+                                        <option value="" className="">Select</option>
                                         {consultationOptions.map(option => (
                                             <option key={option} value={option}>
                                                 {option}
@@ -224,20 +219,19 @@ const ContactSection: React.FC = () => {
                                     {errors.message && <p className="mt-1 text-red-500 text-sm">{errors.message}</p>}
                                 </div>
 
-                                <div className="pt-2">
-                                    <button
-                                        type="submit"
-                                        disabled={isSubmitting}
-                                        className="w-full md:w-auto md:min-w-32 float-right bg-[var(--color-my-purple)] hover:bg-[var(--color-my-purple2)] text-white font-medium py-3 px-6 rounded-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[var(--color-my-lightpurple)] focus:ring-opacity-50 disabled:opacity-70 disabled:cursor-not-allowed flex justify-center"
-                                    >
-                                        {isSubmitting ? (
-                                            <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                            </svg>
-                                        ) : (
-                                            "Submit"
-                                        )}
+                                <div className="mt-2 flex items-center justify-end">
+
+                                    <button type='submit' className="bg-linear-to-b from-my-purple2 to-my-lightpurple2 p-[2px] rounded-[20px] shadow-2xl shadow-my-purple/50 w-full md:max-w-40 ml-auto">
+                                        <div className=" px-5 py-3 md:py-4 font-semibold rounded-[20px] text-base md:text-lg lg:text-xl bg-[radial-gradient(ellipse_97.54%_50.91%_at_50.00%_2.46%,_#A052FF_0%,_#7300FF_100%)] cursor-pointer hover:-translate-y-1 transition-all w-full">
+                                            {isSubmitting ? (
+                                                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                </svg>
+                                            ) : (
+                                                "Submit"
+                                            )}
+                                        </div>
                                     </button>
                                 </div>
                             </form>

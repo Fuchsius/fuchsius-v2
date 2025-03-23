@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 
+export const NAV_ITEMS = [
+  { name: "Home", url: "/" },
+  { name: "About Us", url: "/about" },
+  { name: "Contact Us", url: "/contact" },
+  { name: "Services", url: "/services" },
+];
+
 const Header = () => {
-  const NAV_ITEMS = [
-    { name: "Home", url: "/" },
-    { name: "About Us", url: "/about" },
-    { name: "Contact Us", url: "/contact" },
-    { name: "Services", url: "/services" },
-  ];
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -28,9 +29,8 @@ const Header = () => {
 
   return (
     <header
-      className={`py-10 fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled || isMenuOpen ? "bg-[#0c0618]/80 backdrop-blur-sm" : ""
-      }`}
+      className={`py-10 fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled || isMenuOpen ? "bg-[#0c0618]/80 backdrop-blur-sm" : ""
+        }`}
     >
       <div className="my-container mx-auto px-4 flex items-center justify-between">
         {/* Logo placeholder - you can add your logo here */}
