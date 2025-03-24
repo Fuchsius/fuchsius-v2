@@ -61,7 +61,7 @@ const ServicesCarousel: React.FC<ServicesCarouselProps> = ({ services }) => {
   };
 
   return (
-    <div className="w-full py-12 md:py-16 lg:py-24">
+    <section id="services" className="w-full py-12 md:py-16 lg:py-24">
       <div className="my-container w-full max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between mb-8 px-4">
           <div className="uppercase text-3xl font-semibold font-redHatDisplay leading-10">
@@ -129,7 +129,7 @@ const ServicesCarousel: React.FC<ServicesCarouselProps> = ({ services }) => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
