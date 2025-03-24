@@ -3,6 +3,13 @@ import ServicesCarousel from "@/components/ServicesCarousel";
 import { SERVICES } from "@/data/services.data";
 
 import { CiGlobe } from "react-icons/ci";
+import { FaRegCalendarCheck } from "react-icons/fa";
+import { AiOutlineSafety } from "react-icons/ai";
+import { RiGroupLine } from "react-icons/ri";
+import { FaRegLaugh } from "react-icons/fa";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
+
 
 const HomePage = () => {
   return (
@@ -173,7 +180,7 @@ const HomePage = () => {
       <ServicesCarousel services={SERVICES} />
 
       <div className="w-full py-12 md:py-16 lg:py-24">
-        <div className="my-container w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="my-container">
           <div className="flex flex-col lg:flex-row gap-y-16 lg:gap-y-0 lg:gap-x-8">
             {/* Left Column */}
             <div className="flex flex-col gap-y-8 w-full">
@@ -266,6 +273,57 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
+      <div className="w-full py-12">
+        <div className="my-container w-full">
+          <div className=" bg-gradient-to-b from-my-purple2 via-my-lightpurple to-my-purple px-[1px] rounded-lg w-full">
+            <div className=" w-full h-full p-8 bg-my-black rounded-lg">
+              <div className=" w-full grid grid-cols-2 lg:grid-cols-4 gap-5">
+                <div className=" flex items-center gap-4">
+                  <div className=" text-white bg-my-purple w-24 h-24 flex items-center justify-center rounded-lg">
+                    <FaRegCalendarCheck size={32} />
+                  </div>
+                  <div className=" flex flex-col">
+                    <div className=" font-semibold text-3xl">3+</div>
+                    <div>Year Of experience</div>
+                  </div>
+                </div>
+                <div className=" flex items-center gap-4">
+                  <div className=" text-white bg-my-purple w-24 h-24 flex items-center justify-center rounded-lg">
+                    <AiOutlineSafety size={32} />
+                  </div>
+                  <div className=" flex flex-col">
+                    <div className=" font-semibold text-3xl">20+</div>
+                    <div>Project Complete</div>
+                  </div>
+                </div>
+                <div className=" flex items-center gap-4">
+                  <div className=" text-white bg-my-purple w-24 h-24 flex items-center justify-center rounded-lg">
+                    <RiGroupLine size={32} />
+                  </div>
+                  <div className=" flex flex-col">
+                    <div className=" font-semibold text-3xl">10+</div>
+                    <div>Team Members</div>
+                  </div>
+                </div>
+                <div className=" flex items-center gap-4">
+                  <div className=" text-white bg-my-purple w-24 h-24 flex items-center justify-center rounded-lg">
+                    <FaRegLaugh size={32} />
+                  </div>
+                  <div className=" flex flex-col">
+                    <div className=" font-semibold text-3xl">30+</div>
+                    <div>Satisfied Clients</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ContactSection />
+
+      <Footer />
     </>
   );
 };
