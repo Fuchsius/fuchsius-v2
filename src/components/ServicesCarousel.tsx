@@ -9,11 +9,11 @@ interface Service {
   slug: string;
 }
 
-interface GradientButtonProps {
-  text: string;
-  className?: string;
-  size?: "sm" | "md" | "lg";
-}
+// interface GradientButtonProps {
+//   text: string;
+//   className?: string;
+//   size?: "sm" | "md" | "lg";
+// }
 
 interface ServicesCarouselProps {
   services: Service[];

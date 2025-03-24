@@ -7,7 +7,7 @@ import { Link, useNavigate, useParams } from "react-router";
 import { IoIosArrowForward } from "react-icons/io";
 import ContactSection from "@/components/ContactSection";
 import ReviewCarousel from "@/components/ReviewsCarousel";
-import { AiOutlineLoading3Quarters, AiOutlineSafety } from "react-icons/ai";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { FaArrowRight } from "react-icons/fa";
 import { BiSupport } from "react-icons/bi";
 import { FaRegLightbulb } from "react-icons/fa";

@@ -23,7 +23,7 @@ const GradientButton: React.FC<GradientButtonProps> = ({
   gradientType = "purple",
   onClick,
   className = "",
-  fullWidth = false,
+  // fullWidth = false,
   disabled = false,
   icon = null,
   iconPosition = "right",
