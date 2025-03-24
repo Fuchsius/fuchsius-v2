@@ -85,14 +85,14 @@ const GradientButton: React.FC<GradientButtonProps> = ({
     : "cursor-pointer hover:-translate-y-1";
 
   return (
-    <div
+    <button
       className={`p-[2px] rounded-[20px] shadow-2xl ${selectedGradient.container} ${selectedGradient.shadow} ${className}`}
+      disabled={disabled}
+      type="button"
     >
-      <button
+      <div
         className={`${selectedSize} font-semibold ${selectedGradient.button} ${disabledClasses} transition-all flex items-center justify-center`}
         onClick={disabled ? undefined : onClick}
-        disabled={disabled}
-        type="button"
       >
         {iconPosition === "left" && icon && (
           <span className="mr-2">{icon}</span>
@@ -103,8 +103,8 @@ const GradientButton: React.FC<GradientButtonProps> = ({
         {iconPosition === "right" && icon && (
           <span className="ml-2">{icon}</span>
         )}
-      </button>
-    </div>
+      </div>
+    </button>
   );
 };
 

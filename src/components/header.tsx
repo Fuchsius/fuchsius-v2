@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 
 export const NAV_ITEMS = [
   { name: "Home", url: "/" },
-  { name: "About Us", url: "#about" },
-  { name: "Contact Us", url: "#contact" },
-  { name: "Services", url: "#services" },
+  { name: "About Us", url: "/#about" },
+  { name: "Contact Us", url: "/#contact" },
+  { name: "Services", url: "/#services" },
 ];
 
 const Header = () => {
@@ -28,7 +28,7 @@ const Header = () => {
 
   return (
     <header
-      className={`py-10 fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`py-10 sticky top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled || isMenuOpen ? "bg-[#0c0618]/80 backdrop-blur-sm" : ""
       }`}
     >

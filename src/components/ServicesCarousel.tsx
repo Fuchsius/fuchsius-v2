@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import GradientButton from "./GradientButton";
+// import GradientButton from "./GradientButton";
+import { useNavigate } from "react-router";
 
 interface Service {
   title: string;
   description: string;
+  slug: string;
 }
 
 interface GradientButtonProps {
@@ -21,6 +23,7 @@ const ServicesCarousel: React.FC<ServicesCarouselProps> = ({ services }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [visibleItems, setVisibleItems] = useState<number>(3);
   const carouselRef = useRef<HTMLDivElement>(null);
+  let navigate = useNavigate();
 
   // Determine number of visible items based on screen size
   useEffect(() => {
@@ -103,11 +106,21 @@ const ServicesCarousel: React.FC<ServicesCarouselProps> = ({ services }) => {
                     {service.title}
                   </div>
                   <p className="text-center mt-5">{service.description}</p>
-                  <GradientButton
+                  {/* <GradientButton
                     text="Learn More"
                     className="mt-auto mx-auto"
                     size="md"
-                  />
+                  /> */}
+                  <div className="mt-auto mx-auto bg-linear-to-b from-my-purple2 to-my-lightpurple2 p-[2px] rounded-[20px] shadow-2xl shadow-my-purple/50">
+                    <button
+                      onClick={() => {
+                        navigate(`/services/${service.slug}`);
+                      }}
+                      className=" px-5 py-3 md:py-4 font-semibold rounded-[20px] !text-xs md:text-lg lg:text-xl bg-[radial-gradient(ellipse_97.54%_50.91%_at_50.00%_2.46%,_#A052FF_0%,_#7300FF_100%)] cursor-pointer hover:-translate-y-1 transition-all"
+                    >
+                      Learn More
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
