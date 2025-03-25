@@ -198,7 +198,7 @@ const HeroSection = () => {
   });
 
   return (
-    <div className="w-full overflow-x-auto relative">
+    <div className="w-full overflow-x-hidden relative">
       <div className="my-container">
         <div className="min-h-[calc(100vh-135px)] flex items-center justify-center relative">
           <h1
