@@ -198,7 +198,7 @@ const HeroSection = () => {
   });
 
   return (
-    <div className="w-full overflow-x-hidden relative">
+    <div className="w-full overflow-hidden relative">
       <div className="my-container">
         <div className="min-h-[calc(100vh-135px)] flex items-center justify-center relative">
           <h1
@@ -281,7 +281,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="absolute w-full h-full top-0 z-0 overflow-x-hidden">
+      <div className="absolute w-full h-full top-0 z-0 overflow-hidden">
         <div className="relative w-full h-full flex justify-center items-center">
           <div
             ref={leftBallRef}
