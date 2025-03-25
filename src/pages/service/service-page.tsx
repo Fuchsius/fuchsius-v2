@@ -11,6 +11,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { FaArrowRight } from "react-icons/fa";
 import { BiSupport } from "react-icons/bi";
 import { FaRegLightbulb } from "react-icons/fa";
+import FAQSection from "./FAQSection";
 
 const ServicePage = () => {
   let params = useParams();
@@ -135,6 +136,8 @@ const ServicePage = () => {
           </div>
 
           <ContactSection />
+
+          <FAQSection />
 
           <section id="testimonials" className="w-full relative">
             <img

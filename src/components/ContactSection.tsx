@@ -116,10 +116,7 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section
-      id="contact"
-      className="w-full text-white py-16 px-4 sm:px-6 md:px-8 lg:px-12 relative overflow-hidden"
-    >
+    <section id="contact" className="w-full text-white py-24 relative">
       {/* Background glow effect */}
       <div className="absolute top-0 left-1/4 w-64 h-64 bg-[var(--color-my-purple2)] opacity-20 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[var(--color-my-purple)] opacity-10 rounded-full blur-3xl -z-10"></div>

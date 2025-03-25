@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-// import GradientButton from "./GradientButton";
 import { useNavigate } from "react-router";
 
 interface Service {
@@ -9,59 +9,42 @@ interface Service {
   slug: string;
 }
 
-// interface GradientButtonProps {
-//   text: string;
-//   className?: string;
-//   size?: "sm" | "md" | "lg";
-// }
-
 interface ServicesCarouselProps {
   services: Service[];
 }
 
 const ServicesCarousel: React.FC<ServicesCarouselProps> = ({ services }) => {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [visibleItems, setVisibleItems] = useState<number>(3);
-  const carouselRef = useRef<HTMLDivElement>(null);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    slidesToScroll: 1,
+    containScroll: "trimSnaps",
+    slidesPerView: 1,
+    align: "start",
+    breakpoints: {
+      "(min-width: 768px) and (max-width: 1023px)": { numberOfSlides: 2 },
+      "(min-width: 1024px)": { numberOfSlides: 3 },
+    },
+    loop: true,
+  });
 
-  // Determine number of visible items based on screen size
-  useEffect(() => {
-    const handleResize = (): void => {
-      if (window.innerWidth < 640) {
-        setVisibleItems(1);
-      } else if (window.innerWidth < 1024) {
-        setVisibleItems(2);
-      } else {
-        setVisibleItems(3);
-      }
-    };
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
   // Auto-play functionality
-  useEffect(() => {
+  React.useEffect(() => {
+    if (!emblaApi) return;
+
     const interval = setInterval(() => {
-      goToNext();
-    }, 5000); // Change slide every 5 seconds
+      emblaApi.scrollNext();
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, [currentIndex, visibleItems, services.length]);
-
-  const goToPrev = (): void => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? Math.max(0, services.length - visibleItems) : prev - 1
-    );
-  };
-
-  const goToNext = (): void => {
-    setCurrentIndex((prev) =>
-      prev >= services.length - visibleItems ? 0 : prev + 1
-    );
-  };
+  }, [emblaApi]);
 
   return (
     <section id="services" className="w-full py-12 md:py-16 lg:py-24">
@@ -74,72 +57,45 @@ const ServicesCarousel: React.FC<ServicesCarouselProps> = ({ services }) => {
           <div className="flex gap-5">
             <div
               className="border border-my-purple text-my-purple w-12 h-12 max-h-12 max-w-12 rounded-full flex items-center justify-center hover:shadow-myshadow1 transition-all cursor-pointer"
-              onClick={goToPrev}
+              onClick={scrollPrev}
             >
               <FaArrowLeft />
             </div>
             <div
               className="border border-my-purple text-my-purple w-12 h-12 max-h-12 max-w-12 rounded-full flex items-center justify-center hover:shadow-myshadow1 transition-all cursor-pointer"
-              onClick={goToNext}
+              onClick={scrollNext}
             >
               <FaArrowRight />
             </div>
           </div>
         </div>
 
-        <div ref={carouselRef} className="relative overflow-hidden w-full">
-          <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{
-              transform: `translateX(-${currentIndex * (100 / visibleItems)}%)`,
-              width: `${(services.length / visibleItems) * 100}%`,
-            }}
-          >
+        <div className="embla overflow-hidden" ref={emblaRef}>
+          <div className="embla__container flex">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="px-4 transition-opacity duration-300"
-                style={{ width: `${(100 / services.length) * visibleItems}%` }}
+                className="embla__slide px-4 flex-shrink-0 w-full md:w-1/2 lg:w-1/3"
               >
                 <div className="border-2 border-my-purple rounded-lg py-12 px-6 md:px-10 lg:px-16 flex flex-col h-full transition-all min-h-64 md:min-h-80 lg:min-h-96">
                   <div className="text-2xl lg:text-3xl font-semibold font-redHatDisplay leading-10 text-center">
                     {service.title}
                   </div>
-                  <p className="text-center mt-5">{service.description}</p>
-                  {/* <GradientButton
-                    text="Learn More"
-                    className="mt-auto mx-auto"
-                    size="md"
-                  /> */}
-                  <div className="mt-auto mx-auto bg-linear-to-b from-my-purple2 to-my-lightpurple2 p-[2px] rounded-[20px] shadow-2xl shadow-my-purple/50">
-                    <button
+                  <p className="text-center my-5">{service.description}</p>
+                  <button className="mt-auto mx-auto bg-linear-to-b from-my-purple2 to-my-lightpurple2 p-[2px] rounded-[20px] shadow-2xl shadow-my-purple/50">
+                    <div
                       onClick={() => {
                         navigate(`/services/${service.slug}`);
                       }}
                       className=" px-5 py-3 md:py-4 font-semibold rounded-[20px] !text-xs md:text-lg lg:text-xl bg-[radial-gradient(ellipse_97.54%_50.91%_at_50.00%_2.46%,_#A052FF_0%,_#7300FF_100%)] cursor-pointer hover:-translate-y-1 transition-all"
                     >
                       Learn More
-                    </button>
-                  </div>
+                    </div>
+                  </button>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Carousel indicators */}
-        <div className="flex justify-center mt-8">
-          {Array.from({
-            length: Math.ceil(services.length - visibleItems + 1),
-          }).map((_, index) => (
-            <button
-              key={index}
-              className={`h-2 mx-1 rounded-full transition-all ${
-                currentIndex === index ? "w-6 bg-my-purple" : "w-2 bg-gray-300"
-              }`}
-              onClick={() => setCurrentIndex(index)}
-            />
-          ))}
         </div>
       </div>
     </section>
