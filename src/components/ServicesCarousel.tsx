@@ -18,11 +18,11 @@ const ServicesCarousel: React.FC<ServicesCarouselProps> = ({ services }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: 1,
     containScroll: "trimSnaps",
-    slidesPerView: 1,
+    // slidesPerView: 1,
     align: "start",
     breakpoints: {
-      "(min-width: 768px) and (max-width: 1023px)": { numberOfSlides: 2 },
-      "(min-width: 1024px)": { numberOfSlides: 3 },
+      "(min-width: 768px) and (max-width: 1023px)": { align: "start" },
+      "(min-width: 1024px)": { align: "start" },
     },
     loop: true,
   });
