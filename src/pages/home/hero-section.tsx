@@ -1,6 +1,29 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useGLTF, OrbitControls } from "@react-three/drei";
+import { Mesh } from "three";
+
+// Step 1: Create a 3D Logo Component
+const FuchsiusLogo3D = ({ scale = 1, rotation = [0, 0, 0] }) => {
+  // Ref for the mesh to enable animations
+  const meshRef = useRef<Mesh>(null);
+
+  // Load the 3D model
+  const { scene } = useGLTF("/3d/lastlogo.gltf");
+
+  // Optional: Add rotation animation
+  useFrame((state, delta) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.y += delta * 0.5; // Slow rotation
+    }
+  });
+
+  return (
+    <primitive ref={meshRef} object={scene} scale={scale} rotation={rotation} />
+  );
+};
 
 const HeroSection = () => {
   const mainTitleRef = useRef<HTMLHeadingElement>(null);
@@ -208,12 +231,32 @@ const HeroSection = () => {
             FUCHSIUS
           </h1>
 
-          <img
+          {/* <img
             ref={logoRef}
             src="/logo.svg"
             alt="Fuchsius"
             className="absolute w-36 sm:w-48 md:w-60 lg:w-72 xl:w-auto"
-          />
+          /> */}
+
+          {/* 3D Logo Replacement */}
+          <div
+            // ref={logoRef}
+            className="absolute w-96 h-full"
+          >
+            <Canvas
+              camera={{ position: [0, 0, 5], fov: 45 }}
+              style={{ width: "100%", height: "100%" }}
+            >
+              <ambientLight intensity={0.5} />
+              <pointLight position={[10, 10, 10]} />
+              <FuchsiusLogo3D scale={10} rotation={[0, 0, 0]} />
+              <OrbitControls
+                enableZoom={false}
+                autoRotate={true}
+                autoRotateSpeed={2}
+              />
+            </Canvas>
+          </div>
 
           <button
             ref={buttonRef}
@@ -305,3 +348,6 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
+// Preload the model (optional but recommended)
+useGLTF.preload("/3d/lastlogo.gltf");
